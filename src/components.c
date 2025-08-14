@@ -238,7 +238,7 @@ int rtthread_startup(void)
      * NOTE: please initialize heap inside board initialization.
      */
     rt_hw_board_init();
-init_done = 1;
+
     /* show RT-Thread version */
 //    rt_show_version();
 
@@ -261,7 +261,7 @@ init_done = 1;
 
     /* idle thread initialization */
     rt_thread_idle_init();
-
+init_done = 1;
 #ifdef RT_USING_SMP
     rt_hw_spin_lock(&_cpus_lock);
 #endif /* RT_USING_SMP */

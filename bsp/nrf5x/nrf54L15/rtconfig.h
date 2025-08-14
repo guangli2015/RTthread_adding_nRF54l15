@@ -21,6 +21,20 @@
 #define NRFX_UARTE_ENABLED 1
 #define NRFX_UARTE30_ENABLED 1
 
+#define NRFX_UARTE00_ENABLED 1
+
+
+#define NRFX_UARTE20_ENABLED 1
+
+
+#define NRFX_UARTE21_ENABLED 1
+
+
+#define NRFX_UARTE22_ENABLED 1
+
+
+#define NRFX_UARTE30_ENABLED 1
+
 /* MCU flash config */
 
 #define MCU_FLASH_START_ADDRESS 0x00000000
@@ -34,9 +48,9 @@
 #define NRFX_CLOCK_ENABLED 1
 #define NRFX_CLOCK_DEFAULT_CONFIG_IRQ_PRIORITY 7
 #define NRFX_CLOCK_CONFIG_LF_SRC 1
-#define NRFX_UART_ENABLED 1
-#define NRFX_UART0_ENABLED 1
-#define NRFX_UARTE0_ENABLED 1
+//#define NRFX_UART_ENABLED 1
+//#define NRFX_UART0_ENABLED 1
+//#define NRFX_UARTE0_ENABLED 1
 /* end of Hardware Drivers Config */
 
 /* RT-Thread Kernel */

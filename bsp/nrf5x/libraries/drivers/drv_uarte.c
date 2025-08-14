@@ -27,7 +27,7 @@
 #define BOARD_APP_UARTE_PIN_CTS NRF_PIN_PORT_TO_PIN_NUMBER(3, 0)
 #endif
 #if defined(BSP_USING_UART0) || defined(BSP_USING_UART1)|| defined(BSP_USING_UART2)|| defined(BSP_USING_UART3)
-static  nrfx_uarte_t uarte_instance_te = NRFX_UARTE_INSTANCE(30);
+//static  nrfx_uarte_t uarte_instance_te = NRFX_UARTE_INSTANCE(30);
 typedef struct
 {
     struct rt_serial_device *serial;
@@ -43,7 +43,7 @@ typedef struct
 #ifdef BSP_USING_UART0
 static struct rt_serial_device m_serial_0;
 drv_uart_cb_t m_uarte0_cb = {
-    .uarte_instance = NRFX_UARTE_INSTANCE(30),
+    .uarte_instance = (0),
     .rx_length = 0,
     .rx_pin = BOARD_APP_UARTE_PIN_RX,
     .tx_pin = BOARD_APP_UARTE_PIN_TX,
@@ -345,7 +345,7 @@ int rt_hw_uart_init(void)
 #endif /* SOC_NRF5340*/
     m_serial_0.ops = &_uart_ops;
     m_uarte0_cb.serial = &m_serial_0;
-    rt_hw_serial_register(&m_serial_0, "uart0", \
+    rt_hw_serial_register(&m_serial_0, "uart1", \
                             RT_DEVICE_FLAG_RDWR | RT_DEVICE_FLAG_INT_RX | RT_DEVICE_FLAG_DMA_RX | RT_DEVICE_FLAG_DMA_TX ,  &m_uarte0_cb);
 #endif  /* BSP_USING_UART0 */
 
