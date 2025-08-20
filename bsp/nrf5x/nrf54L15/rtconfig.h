@@ -20,10 +20,7 @@
 #define BSP_UART0_TX_PIN 6
 #define NRFX_UARTE_ENABLED 1
 #define NRFX_UARTE30_ENABLED 1
-
 #define NRFX_UARTE00_ENABLED 1
-
-
 #define NRFX_UARTE20_ENABLED 1
 
 
@@ -31,9 +28,6 @@
 
 
 #define NRFX_UARTE22_ENABLED 1
-
-
-#define NRFX_UARTE30_ENABLED 1
 
 /* MCU flash config */
 
@@ -48,9 +42,6 @@
 #define NRFX_CLOCK_ENABLED 1
 #define NRFX_CLOCK_DEFAULT_CONFIG_IRQ_PRIORITY 7
 #define NRFX_CLOCK_CONFIG_LF_SRC 1
-//#define NRFX_UART_ENABLED 1
-//#define NRFX_UART0_ENABLED 1
-//#define NRFX_UARTE0_ENABLED 1
 /* end of Hardware Drivers Config */
 
 /* RT-Thread Kernel */
@@ -107,7 +98,7 @@
 
 #define RT_USING_COMPONENTS_INIT
 #define RT_USING_USER_MAIN
-#define RT_MAIN_THREAD_STACK_SIZE 8192
+#define RT_MAIN_THREAD_STACK_SIZE 2048
 #define RT_MAIN_THREAD_PRIORITY 10
 #define RT_USING_MSH
 #define RT_USING_FINSH
@@ -135,7 +126,6 @@
 #define RT_USING_DEVICE_IPC
 #define RT_USING_SERIAL
 #define RT_USING_SERIAL_V1
-#define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 64
 #define RT_USING_PIN
 

@@ -120,6 +120,7 @@ menu "On-chip Peripheral Drivers"
         endif
         if BSP_USING_UART&&NRFX_USING_UARTE
             config NRFX_UARTE_ENABLED
+            config NRFX_UARTE30_ENABLED
             int
             default 1
 
@@ -127,6 +128,10 @@ menu "On-chip Peripheral Drivers"
                 bool "Enable UARTE0"
                 default n
                 if BSP_USING_UART0
+                    config NRFX_UARTE00_ENABLED
+                    config NRFX_UARTE20_ENABLED
+                    config NRFX_UARTE21_ENABLED
+                    config NRFX_UARTE22_ENABLED
                     config NRFX_UARTE30_ENABLED
                     int
                     default 1
@@ -576,15 +581,18 @@ if SOC_NORDIC
 endif
 
 if BSP_USING_UART
-    config NRFX_USING_UART
+    config NRFX_USING_UARTE
     bool
     default y
 
-    config NRFX_UART_ENABLED
+    config NRFX_UARTE_ENABLED
     int
     default 1
 if BSP_USING_UART0
-    config NRFX_UART0_ENABLED
+                    config NRFX_UARTE20_ENABLED
+                    config NRFX_UARTE21_ENABLED
+                    config NRFX_UARTE22_ENABLED
+    config NRFX_UARTE00_ENABLED
     int
     default 1
 endif
@@ -596,7 +604,10 @@ if NRFX_USING_UART
 endif
 
 if NRFX_USING_UARTE
-    config NRFX_UARTE0_ENABLED
+                    config NRFX_UARTE20_ENABLED
+                    config NRFX_UARTE21_ENABLED
+                    config NRFX_UARTE22_ENABLED
+    config NRFX_UARTE00_ENABLED
     int
     default 1
 endif

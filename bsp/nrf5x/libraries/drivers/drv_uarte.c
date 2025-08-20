@@ -27,7 +27,7 @@
 #define BOARD_APP_UARTE_PIN_CTS NRF_PIN_PORT_TO_PIN_NUMBER(3, 0)
 #endif
 #if defined(BSP_USING_UART0) || defined(BSP_USING_UART1)|| defined(BSP_USING_UART2)|| defined(BSP_USING_UART3)
-//static  nrfx_uarte_t uarte_instance_te = NRFX_UARTE_INSTANCE(30);
+static  nrfx_uarte_t uarte_instance_te = NRFX_UARTE_INSTANCE(30);
 typedef struct
 {
     struct rt_serial_device *serial;
@@ -43,7 +43,7 @@ typedef struct
 #ifdef BSP_USING_UART0
 static struct rt_serial_device m_serial_0;
 drv_uart_cb_t m_uarte0_cb = {
-    .uarte_instance = (0),
+    .uarte_instance = NRFX_UARTE_INSTANCE(30),
     .rx_length = 0,
     .rx_pin = BOARD_APP_UARTE_PIN_RX,
     .tx_pin = BOARD_APP_UARTE_PIN_TX,
@@ -86,7 +86,7 @@ drv_uart_cb_t m_uarte3_cb = {
 static void uarte_evt_handler(nrfx_uarte_event_t const * p_event,
                               void *                     p_context)
 {
-#if 0
+#if 1
     drv_uart_cb_t *p_cb = RT_NULL;
     p_cb = (drv_uart_cb_t*)p_context;
     switch (p_event->type)
@@ -126,7 +126,7 @@ static void uarte_evt_handler(nrfx_uarte_event_t const * p_event,
 
 static rt_err_t _uart_cfg(struct rt_serial_device *serial, struct serial_configure *cfg)
 {
-#if 0
+#if 1
     int err;
     nrfx_uarte_config_t config = NRFX_UARTE_DEFAULT_CONFIG(BOARD_APP_UARTE_PIN_TX,
 								     BOARD_APP_UARTE_PIN_RX);
@@ -222,7 +222,7 @@ static rt_err_t _uart_cfg(struct rt_serial_device *serial, struct serial_configu
 
 static rt_err_t _uart_ctrl(struct rt_serial_device *serial, int cmd, void *arg)
 {
-    #if 0
+    #if 1
     drv_uart_cb_t *p_cb = RT_NULL;
     RT_ASSERT(serial != RT_NULL);
 
@@ -279,7 +279,7 @@ static rt_err_t _uart_ctrl(struct rt_serial_device *serial, int cmd, void *arg)
 
 static int _uart_putc(struct rt_serial_device *serial, char c)
 {
-    #if 0
+    #if 1
     nrfx_err_t err;
     drv_uart_cb_t *p_cb = RT_NULL;
     int rtn = -1;
@@ -308,7 +308,7 @@ static int _uart_putc(struct rt_serial_device *serial, char c)
 static int _uart_getc(struct rt_serial_device *serial)
 {
     int ch = -1;
-#if 0
+#if 1
     
     drv_uart_cb_t *p_cb = RT_NULL;
     RT_ASSERT(serial != RT_NULL);
@@ -345,7 +345,7 @@ int rt_hw_uart_init(void)
 #endif /* SOC_NRF5340*/
     m_serial_0.ops = &_uart_ops;
     m_uarte0_cb.serial = &m_serial_0;
-    rt_hw_serial_register(&m_serial_0, "uart1", \
+    rt_hw_serial_register(&m_serial_0, "uart0", \
                             RT_DEVICE_FLAG_RDWR | RT_DEVICE_FLAG_INT_RX | RT_DEVICE_FLAG_DMA_RX | RT_DEVICE_FLAG_DMA_TX ,  &m_uarte0_cb);
 #endif  /* BSP_USING_UART0 */
 

@@ -44,7 +44,7 @@
 #define BOARD_APP_UARTE_PIN_CTS NRF_PIN_PORT_TO_PIN_NUMBER(3, 0)
 
 extern int rtthread_startup(void);
-
+#if 0
 static const nrfx_uarte_t uarte_inst = NRFX_UARTE_INSTANCE(30);
 /* Receive buffer used in UARTE ISR callback */
 static uint8_t uarte_rx_buf[4];
@@ -114,10 +114,13 @@ static void uarte_event_handler(nrfx_uarte_event_t const *event, void *ctx)
 		break;
 	}
 }
+#endif
 int app(void)
 {
     int count = 1;
 int err;
+rt_kprintf("rtthread 54l15\n");
+#if 0
     nrfx_uarte_config_t uarte_config = NRFX_UARTE_DEFAULT_CONFIG(BOARD_APP_UARTE_PIN_TX,
 								     BOARD_APP_UARTE_PIN_RX);
     uarte_config.config.hwfc = NRF_UARTE_HWFC_ENABLED;
@@ -143,6 +146,7 @@ int err;
 		//printk("UARTE RX failed, nrfx err %d\n", err);
         	return RT_ERROR;
 	}
+#endif
     //rt_pin_mode(RT_BSP_LED_PIN, PIN_MODE_OUTPUT);
 nrf_gpio_cfg_output(BOARD_PIN_LED_0);
 nrf_gpio_cfg_output(BOARD_PIN_LED_1);
